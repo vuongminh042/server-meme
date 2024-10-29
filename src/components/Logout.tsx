@@ -18,9 +18,10 @@ const Logout: React.FC = () => {
             await signOut(auth);
             toast.success("Đăng xuất thành công!");
             setTimeout(() => {
-                navigate('/');
+                navigate('/login');
             }, 2000);
         } catch (error) {
+            console.log(error);
             toast.error("Có lỗi xảy ra trong quá trình đăng xuất!");
             setIsLoggingOut(false);
         }

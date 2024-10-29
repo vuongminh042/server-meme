@@ -1,7 +1,6 @@
-// src/components/Register.js
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { useState } from "react";
-import { auth } from "../config/firebase.ts";
+import { auth } from "../config/firebase";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from 'react-toastify';
 import './css/User.css';
@@ -12,12 +11,11 @@ const Register = () => {
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
 
         try {
             await createUserWithEmailAndPassword(auth, email, password);
-
             toast.success("Đăng ký thành công!");
 
             setUsername("");
@@ -26,8 +24,8 @@ const Register = () => {
 
             navigate("/login");
         } catch (error) {
-
-            toast.error(error.message);
+            console.log(error);
+            toast.error("Có lỗi xảy ra trong quá trình đăng ký");
         }
     };
 

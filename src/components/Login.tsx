@@ -1,4 +1,3 @@
-// src/components/Login.js
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
@@ -8,10 +7,10 @@ import './css/User.css';
 const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [showMarquee, setShowMarquee] = useState(false); // Thêm trạng thái cho marquee
+    const [showMarquee, setShowMarquee] = useState(false);
     const navigate = useNavigate();
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
 
         const auth = getAuth();
@@ -19,13 +18,14 @@ const Login = () => {
             await signInWithEmailAndPassword(auth, email, password);
             toast.success("Đăng nhập thành công!");
 
-            setShowMarquee(true); // Hiển thị marquee
+            setShowMarquee(true);
 
             setTimeout(() => {
-                navigate('/logout'); // Chuyển hướng sang logout sau 7.5 giây
-            }, 7500); // Chờ 7.5 giây trước khi chuyển hướng
+                navigate('/logout');
+            }, 10000);
         } catch (error) {
-            toast.error(error.message);
+            console.log(error);
+            toast.error("Có lỗi xảy ra trong quá trình đăng nhập");
         }
     };
 
@@ -53,12 +53,14 @@ const Login = () => {
                 </div>
                 <button type="submit">Đăng Nhập</button>
             </form>
-            Bạn chưa có tài khoản <Link to='/'>Đăng ký</Link>
+            <p>
+                Bạn chưa có tài khoản? <Link to='/'>Đăng ký</Link>
+            </p>
             {showMarquee && (
                 <div className="marquee-container">
-                    <marquee behavior="scroll" direction="left">
+                    <div className="scrolling-text">
                         Chào mừng đến với server thiên đường :)))
-                    </marquee>
+                    </div>
                 </div>
             )}
         </div>
