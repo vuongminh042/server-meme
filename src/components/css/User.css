@@ -5,7 +5,7 @@ body {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-image: url('src/assets/thien-duong-meme.jpg');
+    background-image: url('https://res.cloudinary.com/dkqyrejk6/image/upload/v1730190785/meme/de1g9hylsew5j8uovdlo.jpg');
     /* Nền cho trang Login */
     background-size: cover;
     background-repeat: no-repeat;

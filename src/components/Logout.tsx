@@ -30,7 +30,7 @@ const Logout: React.FC = () => {
     return (
         <div className="logout-container">
             <video className="video-background" autoPlay loop muted>
-                <source src="src/assets/Server.mp4" type="video/mp4" />
+                <source src="https://res.cloudinary.com/dkqyrejk6/video/upload/v1730190791/meme/yeo2xsq3cs0gz82ezzll.mp4" type="video/mp4" />
                 Trình duyệt của bạn không hỗ trợ thẻ video.
             </video>
             {showConfirmation ? (
