@@ -31,10 +31,10 @@ const Login = () => {
 
     return (
         <div className="auth-container">
-            <h2>Đăng Nhập</h2>
+            <h2 style={{ color: "black" }}>Đăng Nhập</h2>
             <form onSubmit={handleSubmit}>
                 <div>
-                    <label>Email: </label>
+                    <label style={{ color: "black" }}>Email: </label>
                     <input
                         type="email"
                         value={email}
@@ -43,8 +43,8 @@ const Login = () => {
                     />
                 </div>
                 <div>
-                    <label>Mật khẩu: </label>
-                    <input
+                    <label style={{ color: "black" }}>Mật khẩu: </label>
+                    <input 
                         type="password"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
@@ -54,7 +54,7 @@ const Login = () => {
                 <button type="submit">Đăng Nhập</button>
             </form>
             <p>
-                Bạn chưa có tài khoản? <Link to='/'>Đăng ký</Link>
+                <label style={{ color: "black" }}>Bạn chưa có tài khoản?</label> <Link to='/'>Đăng ký</Link>
             </p>
             {showMarquee && (
                 <div className="marquee-container">

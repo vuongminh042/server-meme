@@ -31,10 +31,10 @@ const Register = () => {
 
     return (
         <div className="auth-container">
-            <h2>Đăng Ký</h2>
+            <h2 style={{ color: "black" }}>Đăng Ký</h2>
             <form onSubmit={handleSubmit}>
                 <div>
-                    <label>Username: </label>
+                    <label style={{ color: "black" }}>Username: </label>
                     <input
                         type="text"
                         value={username}
@@ -43,7 +43,7 @@ const Register = () => {
                     />
                 </div>
                 <div>
-                    <label>Email: </label>
+                    <label style={{ color: "black" }}>Email: </label>
                     <input
                         type="email"
                         value={email}
@@ -52,7 +52,7 @@ const Register = () => {
                     />
                 </div>
                 <div>
-                    <label>Password: </label>
+                    <label style={{ color: "black" }}>Password: </label>
                     <input
                         type="password"
                         value={password}
@@ -62,7 +62,7 @@ const Register = () => {
                 </div>
                 <button type="submit">Đăng Ký</button>
             </form>
-            Bạn đã có tài khoản <Link to='/login'>Đăng nhập</Link>
+            <label style={{ color: "black" }}>Bạn đã có tài khoản</label> <Link to='/login'>Đăng nhập</Link>
         </div>
     );
 };
