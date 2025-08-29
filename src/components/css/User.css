@@ -1,17 +1,12 @@
-/* src/styles/auth.css */
 
-/* Styles cho body */
 body {
     margin: 0;
     padding: 0;
     overflow: hidden;
     background-image: url('https://res.cloudinary.com/dkqyrejk6/image/upload/v1730190785/meme/de1g9hylsew5j8uovdlo.jpg');
-    /* Nền cho trang Login */
     background-size: cover;
     background-repeat: no-repeat;
 }
-
-/* Video nền cho trang Logout */
 .video-background {
     position: fixed;
     top: 0;
@@ -22,7 +17,6 @@ body {
     z-index: -1;
 }
 
-/* Container cho nội dung đăng xuất */
 .logout-container {
     position: relative;
     z-index: 1;
@@ -109,3 +103,37 @@ body {
         transform: translateX(-100%);
     }
 }
+
+.logout-loading {
+    font-size: 18px;
+    font-weight: bold;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .dots::after {
+    content: '';
+    animation: dots 1.5s steps(3, end) infinite;
+  }
+  
+  @keyframes dots {
+    0% { content: ''; }
+    33% { content: '.'; }
+    66% { content: '..' }
+    100% { content: '...'; }
+  }
+  
+  .spinner {
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-top: 3px solid #fff;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    animation: spin 1s linear infinite;
+  }
+  
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }

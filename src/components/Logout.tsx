@@ -1,4 +1,3 @@
-// src/components/Logout.tsx
 import { getAuth, signOut } from 'firebase/auth';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -7,24 +6,31 @@ import './css/User.css'
 
 const Logout: React.FC = () => {
     const [isLoggingOut, setIsLoggingOut] = useState<boolean>(false);
-    const [showConfirmation, setShowConfirmation] = useState<boolean>(true);
+    const [showConfirmation, setShowConfirmation] = useState<boolean>(true); 
+    const [showCancelButton, setShowCancelButton] = useState<boolean>(false); 
     const navigate = useNavigate();
 
     const handleLogout = async () => {
+        setShowConfirmation(false);
         setIsLoggingOut(true);
+        setShowCancelButton(false); 
         const auth = getAuth();
 
-        try {
-            await signOut(auth);
-            toast.success("Đăng xuất thành công!");
-            setTimeout(() => {
-                navigate('/login');
-            }, 2000);
-        } catch (error) {
-            console.log(error);
-            toast.error("Có lỗi xảy ra trong quá trình đăng xuất!");
-            setIsLoggingOut(false);
-        }
+        setTimeout(async () => {
+            try {
+                await signOut(auth);
+                setIsLoggingOut(false);
+                toast.success("Đăng xuất thành công!");
+                setTimeout(() => {
+                    navigate('/login');
+                }, 2000);
+            } catch (error) {
+                console.log(error);
+                toast.error("Có lỗi xảy ra trong quá trình đăng xuất!");
+                setIsLoggingOut(false);
+                setShowCancelButton(true);
+            }
+        }, 3000);
     };
 
     return (
@@ -33,21 +39,23 @@ const Logout: React.FC = () => {
                 <source src="https://res.cloudinary.com/dkqyrejk6/video/upload/v1730190791/meme/yeo2xsq3cs0gz82ezzll.mp4" type="video/mp4" />
                 Trình duyệt của bạn không hỗ trợ thẻ video.
             </video>
-            {showConfirmation ? (
+
+            {showConfirmation && (
                 <div>
-                    <p>Bạn có muốn đăng xuất khỏi trái đất không?</p>
-                    <button onClick={() => setShowConfirmation(false)}>Không</button>
-                    <button onClick={handleLogout}>Chắc chắn</button>
+                    <p style={{ fontSize: 15, fontWeight: 'bold' }}>Bạn có muốn đăng xuất khỏi trái đất không?</p>
+                    <button onClick={() => { setShowConfirmation(false); setShowCancelButton(true); }}>Không</button>
+                    <button style={{ padding: '-20px' }} onClick={handleLogout}>Chắc chắn</button>
                 </div>
-            ) : (
-                <div>
-                    {isLoggingOut ? (
-                        <div>
-                            <p>Đang đăng xuất...</p>
-                        </div>
-                    ) : (
-                        <p>Hủy đăng xuất</p>
-                    )}
+            )}
+
+            {showCancelButton && !isLoggingOut && (
+                <span style={{ fontSize: 15, fontWeight: 'bold' }}>Hủy đăng xuất</span>
+            )}
+
+            {isLoggingOut && (
+                <div className="logout-loading">
+                    <div className="spinner"></div>
+                    <p>Đang đăng xuất<span className="dots"></span></p>
                 </div>
             )}
         </div>

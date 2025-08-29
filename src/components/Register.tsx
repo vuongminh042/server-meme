@@ -62,7 +62,7 @@ const Register = () => {
                 </div>
                 <button type="submit">Đăng Ký</button>
             </form>
-            <label style={{ color: "black" }}>Bạn đã có tài khoản</label> <Link to='/login'>Đăng nhập</Link>
+            <label style={{ color: "black" }}>Bạn đã có tài khoản</label> <Link to='/login' style={{ color: 'blue', fontWeight: 'bold' }}>Đăng nhập</Link>
         </div>
     );
 };

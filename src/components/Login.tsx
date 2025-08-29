@@ -54,12 +54,12 @@ const Login = () => {
                 <button type="submit">Đăng Nhập</button>
             </form>
             <p>
-                <label style={{ color: "black" }}>Bạn chưa có tài khoản?</label> <Link to='/'>Đăng ký</Link>
+                <label style={{ color: "#000" }}>Bạn chưa có tài khoản?</label> <Link to='/' style={{ color: 'blue', fontWeight: 'bold' }}>Đăng ký</Link>
             </p>
             {showMarquee && (
                 <div className="marquee-container">
                     <div className="scrolling-text">
-                        Chào mừng đến với server thiên đường :)))
+                        <label style={{ color: 'black' }}>Chào mừng đến với server thiên đường :)))</label>
                     </div>
                 </div>
             )}
